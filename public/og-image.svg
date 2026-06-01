@@ -1,0 +1,23 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#020617"/>
+  <circle cx="246" cy="132" r="258" fill="#67e8f9" fill-opacity="0.12"/>
+  <circle cx="955" cy="108" r="270" fill="#0ea5e9" fill-opacity="0.12"/>
+  <rect x="78" y="74" width="1044" height="482" rx="38" fill="#08111f" fill-opacity="0.88" stroke="#67e8f9" stroke-opacity="0.24"/>
+  <rect x="128" y="126" width="182" height="56" rx="18" fill="#67e8f9" fill-opacity="0.12" stroke="#67e8f9" stroke-opacity="0.32"/>
+  <text x="154" y="162" fill="#cffafe" font-family="Arial, sans-serif" font-size="24" font-weight="800">RentalXgogo</text>
+  <text x="128" y="270" fill="white" font-family="Arial, sans-serif" font-size="58" font-weight="900">AI &amp; n8n Automation</text>
+  <text x="128" y="340" fill="white" font-family="Arial, sans-serif" font-size="58" font-weight="900">for Business Workflows</text>
+  <text x="132" y="410" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="27">Capture leads, sync CRMs, trigger follow-ups, and remove repetitive work.</text>
+  <rect x="132" y="458" width="248" height="54" rx="27" fill="#67e8f9"/>
+  <text x="169" y="493" fill="#020617" font-family="Arial, sans-serif" font-size="18" font-weight="900">Book Free Strategy Call</text>
+  <g transform="translate(760 170)">
+    <rect width="260" height="270" rx="26" fill="#020617" stroke="#67e8f9" stroke-opacity="0.26"/>
+    <rect x="28" y="36" width="204" height="42" rx="16" fill="#67e8f9" fill-opacity="0.14"/>
+    <rect x="28" y="100" width="204" height="42" rx="16" fill="#67e8f9" fill-opacity="0.1"/>
+    <rect x="28" y="164" width="204" height="42" rx="16" fill="#67e8f9" fill-opacity="0.1"/>
+    <rect x="28" y="228" width="134" height="14" rx="7" fill="#67e8f9" fill-opacity="0.55"/>
+    <circle cx="50" cy="57" r="8" fill="#67e8f9"/>
+    <circle cx="50" cy="121" r="8" fill="#67e8f9"/>
+    <circle cx="50" cy="185" r="8" fill="#67e8f9"/>
+  </g>
+</svg>
