@@ -1,0 +1,1674 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RentalXgogo | Wireless Walkie-Talkie Rentals</title>
+    <meta
+      name="description"
+      content="Rent wireless walkie-talkies for events, security, construction, hotels, schools, and production teams. Fast delivery, bulk rentals, and support."
+    />
+    <style>
+      :root {
+        --bg: #050914;
+        --surface: #0b1220;
+        --surface-2: #111c30;
+        --text: #f8fafc;
+        --muted: #a7b3c6;
+        --line: rgba(255, 255, 255, 0.12);
+        --brand: #67e8f9;
+        --brand-2: #22d3ee;
+        --yellow: #fde68a;
+        --green: #86efac;
+        --danger: #fca5a5;
+        --shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
+        --radius: 18px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at top left, rgba(103, 232, 249, 0.15), transparent 28rem),
+          radial-gradient(circle at top right, rgba(34, 211, 238, 0.12), transparent 28rem),
+          var(--bg);
+        color: var(--text);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      @media (pointer: fine) {
+        body {
+          cursor: none;
+        }
+
+        a,
+        button,
+        input,
+        select,
+        textarea,
+        summary,
+        .card,
+        .plan,
+        .walkie-ad {
+          cursor: none;
+        }
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      .container {
+        width: min(1160px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        border-bottom: 1px solid var(--line);
+        background: rgba(5, 9, 20, 0.82);
+        backdrop-filter: blur(18px);
+      }
+
+      .nav-inner {
+        display: flex;
+        min-height: 72px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        font-weight: 950;
+        letter-spacing: -0.03em;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 42px;
+        height: 42px;
+        place-items: center;
+        border: 1px solid rgba(103, 232, 249, 0.34);
+        border-radius: 14px;
+        background: rgba(103, 232, 249, 0.12);
+        color: var(--brand);
+        box-shadow: 0 0 30px rgba(103, 232, 249, 0.22);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 750;
+      }
+
+      .nav-links a:hover {
+        color: var(--brand);
+      }
+
+      .btn {
+        display: inline-flex;
+        min-height: 48px;
+        align-items: center;
+        justify-content: center;
+        border: 0;
+        border-radius: 999px;
+        padding: 0 22px;
+        background: var(--brand);
+        color: #03111a;
+        cursor: pointer;
+        font-weight: 950;
+        box-shadow: 0 0 34px rgba(103, 232, 249, 0.28);
+        transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        background: #ffffff;
+        box-shadow: 0 0 46px rgba(103, 232, 249, 0.42);
+      }
+
+      .btn.secondary {
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text);
+        box-shadow: none;
+      }
+
+      .hero {
+        overflow: hidden;
+        padding: 88px 0 56px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.03fr 0.97fr;
+        align-items: center;
+        gap: 46px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid rgba(103, 232, 249, 0.28);
+        border-radius: 999px;
+        background: rgba(103, 232, 249, 0.1);
+        padding: 8px 12px;
+        color: #cffafe;
+        font-size: 12px;
+        font-weight: 950;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        margin-top: 22px;
+        max-width: 760px;
+        font-size: clamp(42px, 7vw, 76px);
+        line-height: 0.96;
+        letter-spacing: -0.07em;
+      }
+
+      .hero-copy {
+        margin-top: 22px;
+        max-width: 620px;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.75;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 30px;
+      }
+
+      .trust {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 28px;
+        color: #dbeafe;
+        font-size: 14px;
+        font-weight: 750;
+      }
+
+      .trust div {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .check {
+        color: var(--green);
+      }
+
+      .device-card {
+        position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 32px;
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025)),
+          var(--surface);
+        padding: 28px;
+        box-shadow: var(--shadow);
+      }
+
+      .device-glow {
+        position: absolute;
+        inset: 12%;
+        border-radius: 999px;
+        background: rgba(103, 232, 249, 0.16);
+        filter: blur(70px);
+      }
+
+      .radio-visual {
+        position: relative;
+        display: grid;
+        min-height: 480px;
+        place-items: center;
+      }
+
+      .radio {
+        position: relative;
+        width: 220px;
+        height: 390px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 34px;
+        background:
+          linear-gradient(180deg, #1f2937, #050914 64%),
+          #111827;
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.18),
+          0 35px 80px rgba(0, 0, 0, 0.42);
+      }
+
+      .antenna {
+        position: absolute;
+        top: -116px;
+        left: 50%;
+        width: 18px;
+        height: 128px;
+        transform: translateX(-50%);
+        border-radius: 999px;
+        background: linear-gradient(180deg, #374151, #111827);
+      }
+
+      .knob {
+        position: absolute;
+        top: -16px;
+        right: 34px;
+        width: 38px;
+        height: 34px;
+        border-radius: 12px 12px 4px 4px;
+        background: #1f2937;
+      }
+
+      .screen {
+        margin: 44px auto 22px;
+        width: 154px;
+        border: 1px solid rgba(103, 232, 249, 0.42);
+        border-radius: 18px;
+        background: rgba(103, 232, 249, 0.12);
+        padding: 16px;
+        text-align: center;
+        color: #cffafe;
+        box-shadow: 0 0 28px rgba(103, 232, 249, 0.18);
+      }
+
+      .screen strong {
+        display: block;
+        font-size: 28px;
+        letter-spacing: 0.08em;
+      }
+
+      .speaker {
+        width: 150px;
+        margin: 0 auto;
+        display: grid;
+        gap: 8px;
+      }
+
+      .speaker span {
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.14);
+      }
+
+      .buttons {
+        margin: 28px auto 0;
+        display: grid;
+        width: 144px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+
+      .buttons span {
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: rgba(103, 232, 249, 0.12);
+        border: 1px solid rgba(103, 232, 249, 0.22);
+      }
+
+      .signal {
+        position: absolute;
+        border: 1px solid rgba(103, 232, 249, 0.42);
+        border-left: 0;
+        border-bottom: 0;
+        border-radius: 0 120px 0 0;
+        opacity: 0.7;
+      }
+
+      .signal.one {
+        width: 150px;
+        height: 150px;
+        right: 40px;
+        top: 80px;
+      }
+
+      .signal.two {
+        width: 220px;
+        height: 220px;
+        right: 6px;
+        top: 46px;
+        opacity: 0.38;
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .hero-stat {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 14px;
+      }
+
+      .hero-stat strong {
+        display: block;
+        color: var(--brand);
+        font-size: 24px;
+      }
+
+      .hero-stat span {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .ad-strip {
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.035);
+        padding: 18px 0;
+      }
+
+      .ad-strip-inner {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+      }
+
+      .walkie-ad {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border: 1px solid rgba(103, 232, 249, 0.18);
+        border-radius: 16px;
+        background: rgba(11, 18, 32, 0.74);
+        padding: 14px;
+      }
+
+      .walkie-logo {
+        position: relative;
+        display: grid;
+        width: 42px;
+        height: 52px;
+        flex: 0 0 auto;
+        place-items: center;
+        border: 1px solid rgba(103, 232, 249, 0.35);
+        border-radius: 12px;
+        background: linear-gradient(180deg, #1f2937, #050914);
+        color: var(--brand);
+        font-size: 20px;
+        box-shadow: 0 0 24px rgba(103, 232, 249, 0.16);
+      }
+
+      .walkie-logo::before {
+        content: "";
+        position: absolute;
+        top: -16px;
+        left: 50%;
+        width: 5px;
+        height: 18px;
+        transform: translateX(-50%);
+        border-radius: 999px;
+        background: var(--brand);
+      }
+
+      .walkie-ad strong {
+        display: block;
+        color: var(--text);
+        font-size: 14px;
+      }
+
+      .walkie-ad span {
+        display: block;
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 750;
+      }
+
+      section {
+        padding: 74px 0;
+      }
+
+      .section-head {
+        max-width: 790px;
+        margin: 0 auto 38px;
+        text-align: center;
+      }
+
+      .section-head h2 {
+        margin-top: 14px;
+        font-size: clamp(30px, 4vw, 50px);
+        line-height: 1.05;
+        letter-spacing: -0.055em;
+      }
+
+      .section-head p {
+        margin-top: 14px;
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.72;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+
+      .grid-4 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.045);
+        padding: 22px;
+      }
+
+      .card:hover {
+        border-color: rgba(103, 232, 249, 0.4);
+      }
+
+      .icon {
+        display: grid;
+        width: 48px;
+        height: 48px;
+        place-items: center;
+        border: 1px solid rgba(103, 232, 249, 0.22);
+        border-radius: 16px;
+        background: rgba(103, 232, 249, 0.1);
+        color: var(--brand);
+        font-size: 24px;
+      }
+
+      .category-image {
+        width: 92px;
+        height: 72px;
+        border: 1px solid rgba(103, 232, 249, 0.22);
+        border-radius: 16px;
+        background: rgba(103, 232, 249, 0.08);
+        object-fit: cover;
+      }
+
+      .card h3 {
+        margin-top: 18px;
+        font-size: 20px;
+        letter-spacing: -0.03em;
+      }
+
+      .card p,
+      .plan p,
+      .step p,
+      .testimonial p {
+        margin-top: 10px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .plans {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+
+      .plan {
+        position: relative;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: var(--surface);
+        padding: 24px;
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+      }
+
+      .plan.featured {
+        border-color: rgba(103, 232, 249, 0.52);
+        background:
+          radial-gradient(circle at top, rgba(103, 232, 249, 0.12), transparent 15rem),
+          var(--surface);
+      }
+
+      .badge {
+        display: inline-flex;
+        border-radius: 999px;
+        background: rgba(253, 230, 138, 0.13);
+        padding: 7px 10px;
+        color: var(--yellow);
+        font-size: 12px;
+        font-weight: 950;
+      }
+
+      .price {
+        margin-top: 18px;
+        color: var(--brand);
+        font-size: 42px;
+        font-weight: 950;
+        letter-spacing: -0.05em;
+      }
+
+      .price span {
+        color: var(--muted);
+        font-size: 15px;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      .list {
+        display: grid;
+        gap: 12px;
+        margin: 22px 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .list li {
+        display: flex;
+        gap: 10px;
+        color: #dbeafe;
+        line-height: 1.5;
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: 0.92fr 1.08fr;
+        gap: 28px;
+        align-items: start;
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+      }
+
+      .step {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.045);
+        padding: 22px;
+      }
+
+      .step-num {
+        color: rgba(103, 232, 249, 0.35);
+        font-size: 44px;
+        font-weight: 950;
+      }
+
+      .industries {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .pill {
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 12px 16px;
+        color: #dbeafe;
+        font-weight: 850;
+      }
+
+      .testimonials {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+
+      .testimonial {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.045);
+        padding: 22px;
+      }
+
+      .person {
+        margin-top: 18px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+      }
+
+      .person strong {
+        display: block;
+      }
+
+      .person span {
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 750;
+      }
+
+      .faq {
+        max-width: 860px;
+        margin: 0 auto;
+        display: grid;
+        gap: 12px;
+      }
+
+      details {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.045);
+        padding: 18px;
+      }
+
+      summary {
+        cursor: pointer;
+        font-weight: 950;
+      }
+
+      details p {
+        margin-top: 12px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .booking {
+        display: grid;
+        grid-template-columns: 0.86fr 1.14fr;
+        gap: 24px;
+        align-items: start;
+      }
+
+      .booking-info,
+      .form {
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: rgba(11, 18, 32, 0.82);
+        padding: 24px;
+        box-shadow: var(--shadow);
+      }
+
+      .booking-info h2 {
+        margin-top: 16px;
+        font-size: clamp(30px, 4vw, 46px);
+        letter-spacing: -0.055em;
+        line-height: 1.08;
+      }
+
+      .booking-info p {
+        margin-top: 14px;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .contact-points {
+        display: grid;
+        gap: 13px;
+        margin-top: 22px;
+      }
+
+      .contact-points div {
+        display: flex;
+        gap: 10px;
+        color: #dbeafe;
+        line-height: 1.55;
+      }
+
+      .whatsapp-link {
+        display: inline-flex;
+        min-height: 46px;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 22px;
+        border-radius: 999px;
+        background: #25d366;
+        padding: 0 18px;
+        color: #052e16;
+        font-weight: 950;
+      }
+
+      .call-link {
+        display: inline-flex;
+        min-height: 46px;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 12px;
+        margin-left: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+        padding: 0 18px;
+        color: var(--text);
+        font-weight: 950;
+      }
+
+      .call-link:hover {
+        border-color: rgba(103, 232, 249, 0.5);
+        color: var(--brand);
+      }
+
+      .whatsapp-link:hover {
+        background: #86efac;
+      }
+
+      .whatsapp-float {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        z-index: 60;
+        display: inline-flex;
+        min-height: 54px;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border-radius: 999px;
+        background: #25d366;
+        padding: 0 18px;
+        color: #052e16;
+        font-weight: 950;
+        box-shadow: 0 18px 44px rgba(37, 211, 102, 0.32);
+      }
+
+      .whatsapp-float:hover {
+        background: #86efac;
+      }
+
+      .call-float {
+        position: fixed;
+        right: 18px;
+        bottom: 86px;
+        z-index: 60;
+        display: inline-flex;
+        min-height: 54px;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border: 1px solid rgba(103, 232, 249, 0.32);
+        border-radius: 999px;
+        background: rgba(11, 18, 32, 0.92);
+        padding: 0 18px;
+        color: var(--brand);
+        font-weight: 950;
+        box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
+        backdrop-filter: blur(14px);
+      }
+
+      .call-float:hover {
+        background: rgba(103, 232, 249, 0.12);
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+
+      label {
+        display: grid;
+        gap: 8px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 950;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        min-height: 48px;
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        border-radius: 14px;
+        background: rgba(5, 9, 20, 0.72);
+        color: var(--text);
+        font: inherit;
+        outline: none;
+        padding: 0 14px;
+      }
+
+      textarea {
+        min-height: 124px;
+        resize: vertical;
+        padding-top: 13px;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: rgba(103, 232, 249, 0.72);
+        box-shadow: 0 0 0 4px rgba(103, 232, 249, 0.11);
+      }
+
+      .full {
+        grid-column: 1 / -1;
+      }
+
+      .success {
+        display: none;
+        margin-top: 14px;
+        border: 1px solid rgba(134, 239, 172, 0.34);
+        border-radius: 14px;
+        background: rgba(134, 239, 172, 0.11);
+        padding: 13px;
+        color: #dcfce7;
+        font-weight: 850;
+      }
+
+      .footer {
+        border-top: 1px solid var(--line);
+        padding: 34px 0;
+        color: var(--muted);
+      }
+
+      .cursor-dot,
+      .cursor-ring {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        pointer-events: none;
+        opacity: 0;
+        transform: translate(-50%, -50%);
+      }
+
+      .cursor-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--brand);
+        box-shadow: 0 0 18px rgba(103, 232, 249, 0.8);
+      }
+
+      .cursor-ring {
+        width: 36px;
+        height: 36px;
+        border: 1px solid rgba(103, 232, 249, 0.65);
+        border-radius: 999px;
+        box-shadow: 0 0 28px rgba(103, 232, 249, 0.22);
+        transition: width 0.18s ease, height 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+      }
+
+      .cursor-ring.is-hovering {
+        width: 58px;
+        height: 58px;
+        border-color: rgba(103, 232, 249, 0.95);
+        background: rgba(103, 232, 249, 0.08);
+      }
+
+      @media (pointer: coarse) {
+        .cursor-dot,
+        .cursor-ring {
+          display: none;
+        }
+      }
+
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .footer-menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 16px;
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      .footer-menu a {
+        color: var(--muted);
+      }
+
+      .footer-menu a:hover {
+        color: var(--brand);
+      }
+
+      @media (max-width: 940px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero-grid,
+        .split,
+        .booking {
+          grid-template-columns: 1fr;
+        }
+
+        .grid-4,
+        .grid-3,
+        .ad-strip-inner,
+        .plans,
+        .testimonials {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 640px) {
+        .hero {
+          padding-top: 54px;
+        }
+
+        .hero-actions,
+        .footer-inner {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .footer-menu {
+          justify-content: flex-start;
+        }
+
+        .btn {
+          width: 100%;
+        }
+
+        .whatsapp-float {
+          left: 16px;
+          right: 16px;
+        }
+
+        .call-float {
+          left: 16px;
+          right: 16px;
+        }
+
+        .call-link {
+          width: 100%;
+          margin-left: 0;
+        }
+
+        .trust,
+        .hero-stats,
+        .ad-strip-inner,
+        .grid-4,
+        .grid-3,
+        .plans,
+        .steps,
+        .testimonials,
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .radio-visual {
+          min-height: 420px;
+        }
+
+        .radio {
+          width: 190px;
+          height: 340px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
+    <header class="navbar">
+      <div class="container nav-inner">
+        <a class="brand" href="#home" aria-label="RentalXgogo home">
+          <span class="brand-mark">RX</span>
+          <span>RentalXgogo</span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#plans">Rental Plans</a>
+          <a href="#categories">Categories</a>
+          <a href="#specifications">Specifications</a>
+          <a href="#location">Location</a>
+          <a href="#venues">Venues</a>
+          <a href="#industries">Use Cases</a>
+          <a href="#process">How It Works</a>
+          <a href="#faq">FAQ</a>
+          <a href="#booking">Book Now</a>
+        </nav>
+        <a class="btn" href="#booking">Rent Walkie-Talkies</a>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <span class="eyebrow">Wireless communication rental</span>
+            <h1>Rent reliable walkie-talkies for events, teams, and worksites.</h1>
+            <p class="hero-copy">
+              RentalXgogo provides wireless two-way radio rentals for security teams, concerts,
+              construction sites, hotels, schools, warehouses, and film production crews.
+            </p>
+            <div class="hero-actions">
+              <a class="btn" href="#booking">Get Rental Quote</a>
+              <a class="btn secondary" href="#plans">View Packages</a>
+            </div>
+            <div class="trust">
+              <div><span class="check">✓</span> Bulk rentals available</div>
+              <div><span class="check">✓</span> Long battery life</div>
+              <div><span class="check">✓</span> Event-ready devices</div>
+              <div><span class="check">✓</span> Setup guidance included</div>
+            </div>
+          </div>
+
+          <div class="device-card" aria-label="Wireless walkie-talkie rental device visual">
+            <div class="device-glow"></div>
+            <div class="radio-visual">
+              <div class="signal one"></div>
+              <div class="signal two"></div>
+              <div class="radio">
+                <div class="antenna"></div>
+                <div class="knob"></div>
+                <div class="screen">
+                  <strong>CH 08</strong>
+                  <small>READY</small>
+                </div>
+                <div class="speaker">
+                  <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="buttons">
+                  <span></span><span></span><span></span>
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+            </div>
+            <div class="hero-stats">
+              <div class="hero-stat"><strong>12hr</strong><span>battery life</span></div>
+              <div class="hero-stat"><strong>1.5-2km</strong><span>range options</span></div>
+              <div class="hero-stat"><strong>24h</strong><span>quick dispatch</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="ad-strip" aria-label="Walkie-talkie rental ads">
+        <div class="container ad-strip-inner">
+          <div class="walkie-ad">
+            <div class="walkie-logo">RX</div>
+            <div>
+              <strong>Event Radio Rentals</strong>
+              <span>Clear team communication</span>
+            </div>
+          </div>
+          <div class="walkie-ad">
+            <div class="walkie-logo">2K</div>
+            <div>
+              <strong>1.5 upto 2 KM Range</strong>
+              <span>Great for venues and sites</span>
+            </div>
+          </div>
+          <div class="walkie-ad">
+            <div class="walkie-logo">24</div>
+            <div>
+              <strong>Quick Dispatch</strong>
+              <span>Fast rental support</span>
+            </div>
+          </div>
+          <div class="walkie-ad">
+            <div class="walkie-logo">+</div>
+            <div>
+              <strong>Bulk Walkie Kits</strong>
+              <span>Chargers, earpieces, labels</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section id="services">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Why rent from us</span>
+            <h2>Clear communication equipment without buying expensive devices.</h2>
+            <p>
+              Get dependable wireless communication for short-term projects, large events,
+              seasonal teams, and temporary operations.
+            </p>
+          </div>
+
+          <div class="grid-4">
+            <article class="card">
+              <div class="icon">☊</div>
+              <h3>Strong Range</h3>
+              <p>Choose devices suitable for indoor venues, outdoor sites, hotels, campuses, and large event areas.</p>
+            </article>
+            <article class="card">
+              <div class="icon">🔋</div>
+              <h3>Long Battery</h3>
+              <p>Rental kits include charged devices with battery support options for long shifts and event days.</p>
+            </article>
+            <article class="card">
+              <div class="icon">🎧</div>
+              <h3>Accessories</h3>
+              <p>Add earpieces, chargers, belt clips, spare batteries, and multi-unit charging docks.</p>
+            </article>
+            <article class="card">
+              <div class="icon">⚡</div>
+              <h3>Fast Setup</h3>
+              <p>Devices can be pre-programmed by channel, team group, or department before handover.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="plans">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Rental plans</span>
+            <h2>Flexible walkie-talkie rental packages.</h2>
+            <p>Use these sample packages as a starting point. Final pricing can be customized by quantity, rental duration, range, and accessories.</p>
+          </div>
+
+          <div class="plans">
+            <article class="plan">
+              <span class="badge">Small Team</span>
+              <h3>Basic Kit</h3>
+              <div class="price">₹999<span>/day</span></div>
+              <p>Best for small teams, pop-up events, shops, and local coordination.</p>
+              <ul class="list">
+                <li><span class="check">✓</span> 5 walkie-talkies</li>
+                <li><span class="check">✓</span> 5 charging cables</li>
+                <li><span class="check">✓</span> Basic channel setup</li>
+                <li><span class="check">✓</span> Pickup or local delivery</li>
+              </ul>
+              <a class="btn secondary" href="#booking">Choose Basic</a>
+            </article>
+
+            <article class="plan featured">
+              <span class="badge">Most Popular</span>
+              <h3>Event Kit</h3>
+              <div class="price">₹2,499<span>/day</span></div>
+              <p>Ideal for weddings, conferences, concerts, security, and production teams.</p>
+              <ul class="list">
+                <li><span class="check">✓</span> 15 walkie-talkies</li>
+                <li><span class="check">✓</span> Multi-unit charger</li>
+                <li><span class="check">✓</span> Earpiece add-on option</li>
+                <li><span class="check">✓</span> Team channel setup</li>
+              </ul>
+              <a class="btn" href="#booking">Choose Event Kit</a>
+            </article>
+
+            <article class="plan">
+              <span class="badge">Large Operations</span>
+              <h3>Enterprise Kit</h3>
+              <div class="price">Custom</div>
+              <p>For construction sites, hotels, campuses, warehouses, and multi-day operations.</p>
+              <ul class="list">
+                <li><span class="check">✓</span> 30+ walkie-talkies</li>
+                <li><span class="check">✓</span> Multiple channels</li>
+                <li><span class="check">✓</span> Spare batteries</li>
+                <li><span class="check">✓</span> Priority support</li>
+              </ul>
+              <a class="btn secondary" href="#booking">Request Custom Quote</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="categories">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Categories</span>
+            <h2>Our equipment categories.</h2>
+            <p>
+              Select the right walkie-talkie rental equipment for your event, worksite, venue,
+              or operations team.
+            </p>
+          </div>
+
+          <div class="grid-4">
+            <article class="card">
+              <div class="icon">📻</div>
+              <h3>Walkie-Talkies</h3>
+              <p>Wireless handheld radios for staff, security, event teams, construction, and daily operations.</p>
+            </article>
+            <article class="card">
+              <img class="category-image" src="clear-com-headset.svg" alt="Clear-Com headset rental equipment" />
+              <h3>Clear-Com & Earpieces</h3>
+              <p>Clear-Com style headsets, discreet earpieces, and audio accessories for security, VIP, and production crews.</p>
+            </article>
+            <article class="card">
+              <img class="category-image" src="security-system.svg" alt="Security system rental equipment" />
+              <h3>Security System</h3>
+              <p>Security communication support with walkie-talkies, monitoring coordination, and event safety equipment.</p>
+            </article>
+            <article class="card">
+              <div class="icon">📦</div>
+              <h3>Bulk Rental Kits</h3>
+              <p>Custom walkie-talkie bundles with accessories, labels, backup units, and setup support.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="specifications">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Specifications</span>
+            <h2>Walkie-talkie specifications.</h2>
+            <p>
+              Rental kits are suitable for events, security teams, venues, schools,
+              construction sites, warehouses, and business operations.
+            </p>
+          </div>
+
+          <div class="grid-4">
+            <article class="card">
+              <div class="icon">📶</div>
+              <h3>Model</h3>
+              <p>Wireless walkie-talkie units available for short-term and bulk rentals.</p>
+            </article>
+            <article class="card">
+              <div class="icon">📶</div>
+              <h3>Range</h3>
+              <p>1.5 upto 2 KM range depending on building structure, open area, walls, crowd density, and site conditions.</p>
+            </article>
+            <article class="card">
+              <div class="icon">🔋</div>
+              <h3>Battery Backup</h3>
+              <p>Long-shift battery support with charging cables, spare batteries, and multi-unit charger options.</p>
+            </article>
+            <article class="card">
+              <div class="icon">🔢</div>
+              <h3>Channels</h3>
+              <p>Multiple channel setup for security, management, parking, operations, vendors, and support teams.</p>
+            </article>
+            <article class="card">
+              <div class="icon">🎧</div>
+              <h3>Audio Accessories</h3>
+              <p>Earpieces, headset options, Clear-Com style support, belt clips, and labeled team accessories.</p>
+            </article>
+            <article class="card">
+              <div class="icon">⚙</div>
+              <h3>Setup</h3>
+              <p>Devices can be checked, charged, labeled, and organized by team before handover.</p>
+            </article>
+            <article class="card">
+              <div class="icon">🛡</div>
+              <h3>Build Type</h3>
+              <p>Compact handheld wireless radios suitable for events, hotels, schools, warehouses, and worksites.</p>
+            </article>
+            <article class="card">
+              <div class="icon">📦</div>
+              <h3>Kit Includes</h3>
+              <p>Walkie-talkies, chargers, optional earpieces, spare battery options, and quantity-based rental bundles.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="industries">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Use cases</span>
+            <h2>Walkie-talkies for every team that needs instant communication.</h2>
+            <p>Wireless radios are perfect when phone calls are too slow, internet is unreliable, or group coordination matters.</p>
+          </div>
+          <div class="industries">
+            <span class="pill">Event Management</span>
+            <span class="pill">Security Teams</span>
+            <span class="pill">Construction Sites</span>
+            <span class="pill">Hotels & Resorts</span>
+            <span class="pill">Film Production</span>
+            <span class="pill">Schools & Campuses</span>
+            <span class="pill">Warehouses</span>
+            <span class="pill">Parking Staff</span>
+            <span class="pill">Festivals</span>
+            <span class="pill">Hospitals</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="location">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Location</span>
+            <h2>Walkie-talkie rentals available in Santacruz East, Mumbai and nearby areas.</h2>
+            <p>
+              RentalXgogo supports event teams, security teams, hotels, schools, warehouses,
+              and construction sites across Mumbai with pickup and local delivery options.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <article class="card">
+              <div class="icon">📍</div>
+              <h3>Main Service Area</h3>
+              <p>Datta Mandir Rd, Demello Compound, Vakola, Santacruz East, Mumbai, Maharashtra 400055.</p>
+            </article>
+            <article class="card">
+              <div class="icon">🚚</div>
+              <h3>Delivery Support</h3>
+              <p>Pickup and delivery can be arranged depending on quantity, rental date, and location distance.</p>
+            </article>
+            <article class="card">
+              <div class="icon">☎</div>
+              <h3>Call for Availability</h3>
+              <p>Call 9140968645 to confirm device availability, pricing, delivery, and rental timing.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="venues">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Wedding venues</span>
+            <h2>Wedding venues we cover in Mumbai.</h2>
+            <p>
+              RentalXgogo provides walkie-talkie rental support for wedding planners,
+              event managers, security teams, hospitality staff, and venue coordination teams.
+            </p>
+          </div>
+          <div class="industries">
+            <span class="pill">Andheri</span>
+            <span class="pill">Bandra</span>
+            <span class="pill">Juhu</span>
+            <span class="pill">Goregaon</span>
+            <span class="pill">Powai</span>
+            <span class="pill">Worli</span>
+            <span class="pill">Malad</span>
+            <span class="pill">Santacruz</span>
+            <span class="pill">Panvel</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="process">
+        <div class="container split">
+          <div>
+            <span class="eyebrow">How it works</span>
+            <h2 style="margin-top: 18px; font-size: clamp(30px, 4vw, 48px); letter-spacing: -0.055em; line-height: 1.08">
+              Simple rental process from quote to return.
+            </h2>
+            <p style="margin-top: 16px; color: var(--muted); line-height: 1.75">
+              Tell us your event date, number of users, location type, and required accessories.
+              We help you select the right kit and prepare devices before handover.
+            </p>
+            <a class="btn" href="#booking" style="margin-top: 24px">Start Booking</a>
+          </div>
+          <div class="steps">
+            <article class="step">
+              <div class="step-num">01</div>
+              <h3>Request a quote</h3>
+              <p>Share quantity, date, duration, venue type, and special communication requirements.</p>
+            </article>
+            <article class="step">
+              <div class="step-num">02</div>
+              <h3>Choose the kit</h3>
+              <p>Select radios, chargers, earpieces, spare batteries, and channel configuration.</p>
+            </article>
+            <article class="step">
+              <div class="step-num">03</div>
+              <h3>Receive devices</h3>
+              <p>Pick up or arrange delivery. Devices can be labeled and pre-programmed for teams.</p>
+            </article>
+            <article class="step">
+              <div class="step-num">04</div>
+              <h3>Use and return</h3>
+              <p>Operate during your rental period, then return equipment after the event or project.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Customer feedback</span>
+            <h2>Trusted for fast-moving teams and busy event days.</h2>
+          </div>
+          <div class="testimonials">
+            <figure class="testimonial">
+              <p>"The radios were ready, labeled, and charged. Our event security team stayed connected all night."</p>
+              <figcaption class="person">
+                <strong>Jordan Blake</strong>
+                <span>Event Operations Manager</span>
+              </figcaption>
+            </figure>
+            <figure class="testimonial">
+              <p>"We rented a large kit for a construction project. The range and battery life worked well for our site."</p>
+              <figcaption class="person">
+                <strong>Priya Nair</strong>
+                <span>Site Coordinator</span>
+              </figcaption>
+            </figure>
+            <figure class="testimonial">
+              <p>"Simple process and clear pricing. The earpieces made communication much easier for our front desk team."</p>
+              <figcaption class="person">
+                <strong>Marcus Lee</strong>
+                <span>Hotel Manager</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">FAQ</span>
+            <h2>Walkie-talkie rental questions.</h2>
+          </div>
+          <div class="faq">
+            <details open>
+              <summary>How many walkie-talkies should I rent?</summary>
+              <p>Count every person who needs instant communication, then add 1 or 2 spare units for supervisors, charging rotation, or emergency backup.</p>
+            </details>
+            <details>
+              <summary>Can devices be set up with different channels?</summary>
+              <p>Yes. Devices can be grouped by security, operations, parking, management, vendors, or any team structure you need.</p>
+            </details>
+            <details>
+              <summary>Do you provide earpieces and chargers?</summary>
+              <p>Yes. Rental kits can include earpieces, charging cables, multi-unit chargers, belt clips, spare batteries, and labels.</p>
+            </details>
+            <details>
+              <summary>What rental durations are available?</summary>
+              <p>You can request daily, weekend, weekly, or long-term rentals depending on your project or event schedule.</p>
+            </details>
+            <details>
+              <summary>Are walkie-talkies better than phones for events?</summary>
+              <p>For many teams, yes. Walkie-talkies allow instant push-to-talk communication without dialing, app setup, or depending on mobile data.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section id="booking">
+        <div class="container booking">
+          <div class="booking-info">
+            <span class="eyebrow">Book rental</span>
+            <h2>HH</h2>
+            <p>
+              Fill out the form with your quantity, dates, location, and accessories.
+              This demo form shows a success message on submit.
+            </p>
+            <div class="contact-points">
+              <div><span class="check">✓</span> Location: Datta Mandir Rd, Demello Compound, Vakola, Santacruz East, Mumbai, Maharashtra 400055</div>
+              <div><span class="check">✓</span> Same-day or next-day requests available where possible</div>
+              <div><span class="check">✓</span> Support for small teams and large events</div>
+              <div><span class="check">✓</span> Custom kits for security, staff, vendors, and managers</div>
+              <div><span class="check">✓</span> Optional earpieces, chargers, batteries, and labels</div>
+            </div>
+            <a
+              class="whatsapp-link"
+              href="https://wa.me/9140968645?text=Hi%20RentalXgogo%2C%20I%20want%20to%20rent%20wireless%20walkie-talkies."
+              target="_blank"
+              rel="noopener"
+            >
+              Chat on WhatsApp
+            </a>
+            <a class="call-link" href="tel:9140968645">Call 9140968645</a>
+          </div>
+
+          <form class="form" id="rentalForm">
+            <div class="form-grid">
+              <label>
+                Full name
+                <input name="name" placeholder="Your name" required />
+              </label>
+              <label>
+                Email
+                <input name="email" type="email" placeholder="you@example.com" required />
+              </label>
+              <label>
+                Phone number
+                <input name="phone" placeholder="+1 555 000 1234" required />
+              </label>
+              <label>
+                Company / Event
+                <input name="company" placeholder="Company or event name" />
+              </label>
+              <label>
+                Quantity needed
+                <input name="quantity" type="number" min="1" placeholder="Example: 20" required />
+              </label>
+              <label>
+                Rental duration
+                <select name="duration" required>
+                  <option value="">Select duration</option>
+                  <option>1 day</option>
+                  <option>Weekend</option>
+                  <option>1 week</option>
+                  <option>1 month</option>
+                  <option>Custom duration</option>
+                </select>
+              </label>
+              <label>
+                Start date
+                <input name="startDate" type="date" required />
+              </label>
+              <label>
+                Kit type
+                <select name="kit">
+                  <option>Basic Kit</option>
+                  <option>Event Kit</option>
+                  <option>Enterprise Kit</option>
+                  <option>Custom Kit</option>
+                </select>
+              </label>
+              <label class="full">
+                Accessories
+                <select name="accessories">
+                  <option>Walkie-talkies only</option>
+                  <option>Earpieces required</option>
+                  <option>Multi-unit charger required</option>
+                  <option>Spare batteries required</option>
+                  <option>Full accessory kit</option>
+                </select>
+              </label>
+              <label class="full">
+                Message
+                <textarea
+                  name="message"
+                  placeholder="Tell us about your venue, teams, channels, delivery needs, or special requirements."
+                  required
+                ></textarea>
+              </label>
+            </div>
+            <button class="btn" type="submit" style="margin-top: 16px">Submit Rental Request</button>
+            <div class="success" id="successMessage">
+              Your walkie-talkie rental request has been submitted. We will contact you soon.
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <a class="brand" href="#home">
+          <span class="brand-mark">RX</span>
+          <span>RentalXgogo</span>
+        </a>
+        <nav class="footer-menu" aria-label="Footer navigation">
+          <a href="#plans">Rental Plans</a>
+          <a href="#categories">Categories</a>
+          <a href="#specifications">Specifications</a>
+          <a href="#location">Location</a>
+          <a href="#venues">Venues</a>
+          <a href="#industries">Use Cases</a>
+          <a href="#process">How It Works</a>
+          <a href="#faq">FAQ</a>
+          <a href="#booking">Book Now</a>
+        </nav>
+        <div>© <span id="year"></span> RentalXgogo. Wireless walkie-talkie rentals.</div>
+      </div>
+    </footer>
+
+    <a
+      class="whatsapp-float"
+      href="https://wa.me/9140968645?text=Hi%20RentalXgogo%2C%20I%20want%20to%20rent%20wireless%20walkie-talkies."
+      target="_blank"
+      rel="noopener"
+      aria-label="Chat with RentalXgogo on WhatsApp"
+    >
+      WhatsApp
+    </a>
+    <a class="call-float" href="tel:9140968645" aria-label="Call RentalXgogo">
+      Call 9140968645
+    </a>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const rentalForm = document.getElementById("rentalForm");
+      const successMessage = document.getElementById("successMessage");
+
+      const cursorDot = document.querySelector(".cursor-dot");
+      const cursorRing = document.querySelector(".cursor-ring");
+      const hoverTargets = "a, button, input, select, textarea, summary, .card, .plan, .walkie-ad";
+
+      if (window.matchMedia("(pointer: fine)").matches && cursorDot && cursorRing) {
+        window.addEventListener("mousemove", (event) => {
+          cursorDot.style.opacity = "1";
+          cursorRing.style.opacity = "1";
+          cursorDot.style.transform = `translate(${event.clientX}px, ${event.clientY}px) translate(-50%, -50%)`;
+          cursorRing.style.transform = `translate(${event.clientX}px, ${event.clientY}px) translate(-50%, -50%)`;
+        });
+
+        document.querySelectorAll(hoverTargets).forEach((element) => {
+          element.addEventListener("mouseenter", () => cursorRing.classList.add("is-hovering"));
+          element.addEventListener("mouseleave", () => cursorRing.classList.remove("is-hovering"));
+        });
+      }
+
+      rentalForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        if (!rentalForm.checkValidity()) {
+          rentalForm.reportValidity();
+          return;
+        }
+
+        successMessage.style.display = "block";
+        rentalForm.reset();
+        successMessage.scrollIntoView({ behavior: "smooth", block: "center" });
+      });
+    </script>
+  </body>
+</html>

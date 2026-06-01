@@ -1,0 +1,996 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RentalXgogo | Premium Property Rentals</title>
+    <meta
+      name="description"
+      content="Find premium homes, apartments, villas, and commercial rentals with RentalXgogo. Search verified listings and book property viewings fast."
+    />
+    <style>
+      :root {
+        --bg: #07111f;
+        --panel: #0d1b2f;
+        --panel-2: #11233b;
+        --text: #f8fafc;
+        --muted: #a9b7ca;
+        --line: rgba(255, 255, 255, 0.12);
+        --brand: #38d5ff;
+        --brand-2: #8ef6ff;
+        --green: #7dd3a8;
+        --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+        --radius: 18px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        border-bottom: 1px solid var(--line);
+        background: rgba(7, 17, 31, 0.84);
+        backdrop-filter: blur(18px);
+      }
+
+      .nav-inner {
+        display: flex;
+        min-height: 72px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 900;
+        letter-spacing: -0.03em;
+      }
+
+      .logo-mark {
+        display: grid;
+        width: 40px;
+        height: 40px;
+        place-items: center;
+        border: 1px solid rgba(56, 213, 255, 0.35);
+        border-radius: 14px;
+        background: rgba(56, 213, 255, 0.12);
+        color: var(--brand-2);
+        box-shadow: 0 0 28px rgba(56, 213, 255, 0.18);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .nav-links a:hover {
+        color: var(--brand-2);
+      }
+
+      .btn {
+        display: inline-flex;
+        min-height: 46px;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border: 0;
+        border-radius: 999px;
+        padding: 0 20px;
+        background: var(--brand-2);
+        color: #05111f;
+        cursor: pointer;
+        font-weight: 900;
+        box-shadow: 0 0 34px rgba(56, 213, 255, 0.28);
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        background: #ffffff;
+        box-shadow: 0 0 42px rgba(56, 213, 255, 0.42);
+      }
+
+      .btn.secondary {
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text);
+        box-shadow: none;
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        padding: 88px 0 54px;
+        background:
+          radial-gradient(circle at 20% 16%, rgba(56, 213, 255, 0.2), transparent 30%),
+          radial-gradient(circle at 86% 4%, rgba(125, 211, 168, 0.16), transparent 28%),
+          linear-gradient(180deg, #07111f 0%, #09172a 100%);
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        align-items: center;
+        gap: 44px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid rgba(56, 213, 255, 0.22);
+        border-radius: 999px;
+        padding: 8px 12px;
+        background: rgba(56, 213, 255, 0.1);
+        color: var(--brand-2);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        margin-top: 22px;
+        max-width: 720px;
+        font-size: clamp(42px, 7vw, 76px);
+        line-height: 0.96;
+        letter-spacing: -0.07em;
+      }
+
+      .hero p {
+        margin-top: 22px;
+        max-width: 610px;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.8;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 30px;
+      }
+
+      .hero-card {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        background: rgba(13, 27, 47, 0.74);
+        box-shadow: var(--shadow);
+      }
+
+      .hero-image {
+        min-height: 390px;
+        background:
+          linear-gradient(180deg, rgba(7, 17, 31, 0.08), rgba(7, 17, 31, 0.58)),
+          url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85")
+            center/cover;
+      }
+
+      .floating-panel {
+        margin: -86px 18px 18px;
+        position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 22px;
+        background: rgba(7, 17, 31, 0.82);
+        padding: 18px;
+        backdrop-filter: blur(18px);
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+
+      .stat {
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.06);
+        padding: 14px;
+      }
+
+      .stat strong {
+        display: block;
+        color: var(--brand-2);
+        font-size: 24px;
+      }
+
+      .stat span {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .search {
+        transform: translateY(-28px);
+      }
+
+      .search-box {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr 1fr auto;
+        gap: 12px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: rgba(13, 27, 47, 0.92);
+        padding: 14px;
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(18px);
+      }
+
+      label {
+        display: grid;
+        gap: 8px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        min-height: 46px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 14px;
+        background: rgba(7, 17, 31, 0.74);
+        color: var(--text);
+        font: inherit;
+        outline: none;
+        padding: 0 14px;
+      }
+
+      textarea {
+        min-height: 118px;
+        resize: vertical;
+        padding-top: 12px;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: rgba(142, 246, 255, 0.7);
+        box-shadow: 0 0 0 4px rgba(56, 213, 255, 0.1);
+      }
+
+      section {
+        padding: 72px 0;
+      }
+
+      .section-head {
+        max-width: 760px;
+        margin: 0 auto 36px;
+        text-align: center;
+      }
+
+      .section-head h2 {
+        font-size: clamp(30px, 4vw, 48px);
+        line-height: 1.05;
+        letter-spacing: -0.05em;
+      }
+
+      .section-head p {
+        margin-top: 14px;
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.7;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+
+      .property {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--panel);
+        transition: transform 0.22s ease, border-color 0.22s ease;
+      }
+
+      .property:hover {
+        transform: translateY(-5px);
+        border-color: rgba(56, 213, 255, 0.42);
+      }
+
+      .property-img {
+        height: 230px;
+        object-fit: cover;
+      }
+
+      .property-body {
+        padding: 18px;
+      }
+
+      .property-top {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .price {
+        color: var(--brand-2);
+        font-size: 20px;
+        font-weight: 950;
+        white-space: nowrap;
+      }
+
+      .property h3 {
+        font-size: 20px;
+        letter-spacing: -0.03em;
+      }
+
+      .property p {
+        margin-top: 8px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .tag {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 7px 10px;
+        color: #dbeafe;
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+      }
+
+      .feature,
+      .step,
+      .testimonial,
+      .contact-card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.045);
+        padding: 22px;
+      }
+
+      .icon {
+        display: grid;
+        width: 46px;
+        height: 46px;
+        place-items: center;
+        border-radius: 16px;
+        background: rgba(56, 213, 255, 0.12);
+        color: var(--brand-2);
+        font-size: 22px;
+      }
+
+      .feature h3,
+      .step h3 {
+        margin-top: 18px;
+        font-size: 18px;
+      }
+
+      .feature p,
+      .step p,
+      .testimonial p {
+        margin-top: 10px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 26px;
+        align-items: start;
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+      }
+
+      .step-number {
+        color: rgba(142, 246, 255, 0.38);
+        font-size: 44px;
+        font-weight: 950;
+      }
+
+      .testimonials {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+
+      .person {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 18px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+      }
+
+      .avatar {
+        display: grid;
+        width: 44px;
+        height: 44px;
+        place-items: center;
+        border-radius: 999px;
+        background: var(--brand-2);
+        color: #07111f;
+        font-weight: 950;
+      }
+
+      .faq {
+        max-width: 850px;
+        margin: 0 auto;
+        display: grid;
+        gap: 12px;
+      }
+
+      details {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.045);
+        padding: 18px;
+      }
+
+      summary {
+        cursor: pointer;
+        font-weight: 900;
+      }
+
+      details p {
+        margin-top: 12px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .contact-wrap {
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 22px;
+      }
+
+      .contact-list {
+        display: grid;
+        gap: 14px;
+        margin-top: 22px;
+      }
+
+      .contact-list div {
+        display: flex;
+        gap: 10px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .form {
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: rgba(13, 27, 47, 0.86);
+        padding: 22px;
+        box-shadow: var(--shadow);
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+
+      .full {
+        grid-column: 1 / -1;
+      }
+
+      .footer {
+        border-top: 1px solid var(--line);
+        padding: 34px 0;
+        color: var(--muted);
+      }
+
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .success {
+        display: none;
+        margin-top: 14px;
+        border: 1px solid rgba(125, 211, 168, 0.32);
+        border-radius: 14px;
+        background: rgba(125, 211, 168, 0.1);
+        padding: 12px;
+        color: #d1fae5;
+        font-weight: 800;
+      }
+
+      @media (max-width: 920px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero-grid,
+        .split,
+        .contact-wrap {
+          grid-template-columns: 1fr;
+        }
+
+        .search-box,
+        .cards,
+        .features,
+        .testimonials {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .hero {
+          padding-top: 56px;
+        }
+
+        .search {
+          transform: none;
+          padding-top: 18px;
+        }
+
+        .search-box,
+        .cards,
+        .features,
+        .steps,
+        .testimonials,
+        .form-grid,
+        .stats {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-actions,
+        .footer-inner {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .btn {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nav">
+      <div class="container nav-inner">
+        <a class="logo" href="#home" aria-label="RentalXgogo home">
+          <span class="logo-mark">RX</span>
+          <span>RentalXgogo</span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#listings">Listings</a>
+          <a href="#services">Services</a>
+          <a href="#process">How it works</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a class="btn" href="#contact">Book Viewing</a>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <span class="eyebrow">Verified rentals, fast booking</span>
+            <h1>Find your next perfect rental without the stress.</h1>
+            <p>
+              RentalXgogo helps renters discover verified apartments, family homes, villas,
+              and commercial spaces with clear pricing, trusted support, and quick viewing requests.
+            </p>
+            <div class="hero-actions">
+              <a class="btn" href="#listings">Explore Rentals</a>
+              <a class="btn secondary" href="#contact">Talk to an Agent</a>
+            </div>
+          </div>
+
+          <div class="hero-card" aria-label="Featured rental property">
+            <div class="hero-image"></div>
+            <div class="floating-panel">
+              <h2>Luxury Lakeview Villa</h2>
+              <p style="margin-top: 8px; color: var(--muted); line-height: 1.6">
+                4 beds, 3 baths, private parking, fully furnished.
+              </p>
+              <div class="stats">
+                <div class="stat"><strong>$2,850</strong><span>per month</span></div>
+                <div class="stat"><strong>24h</strong><span>viewing setup</span></div>
+                <div class="stat"><strong>4.9</strong><span>tenant rating</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="container search">
+        <form class="search-box" id="searchForm">
+          <label>
+            Location
+            <input id="locationInput" type="text" placeholder="City or neighborhood" />
+          </label>
+          <label>
+            Property Type
+            <select id="typeInput">
+              <option value="">All types</option>
+              <option>Apartment</option>
+              <option>House</option>
+              <option>Villa</option>
+              <option>Commercial</option>
+            </select>
+          </label>
+          <label>
+            Budget
+            <select id="budgetInput">
+              <option value="">Any budget</option>
+              <option value="1500">Under $1,500</option>
+              <option value="2500">Under $2,500</option>
+              <option value="4000">Under $4,000</option>
+            </select>
+          </label>
+          <button class="btn" type="submit">Search</button>
+        </form>
+      </div>
+
+      <section id="listings">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Featured listings</span>
+            <h2>Move-in ready rentals for every lifestyle.</h2>
+            <p>Browse hand-picked rental properties with transparent details and quick inquiry options.</p>
+          </div>
+
+          <div class="cards" id="propertyGrid">
+            <article class="property" data-location="Austin" data-type="Apartment" data-price="1400">
+              <img class="property-img" src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=85" alt="Modern apartment living room" />
+              <div class="property-body">
+                <div class="property-top">
+                  <h3>Modern City Apartment</h3>
+                  <div class="price">$1,400/mo</div>
+                </div>
+                <p>Austin, TX. Bright 2-bedroom apartment near transit, cafes, and business districts.</p>
+                <div class="tags"><span class="tag">2 Beds</span><span class="tag">1 Bath</span><span class="tag">Parking</span></div>
+              </div>
+            </article>
+
+            <article class="property" data-location="Miami" data-type="Villa" data-price="3800">
+              <img class="property-img" src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=900&q=85" alt="Luxury villa exterior" />
+              <div class="property-body">
+                <div class="property-top">
+                  <h3>Private Coastal Villa</h3>
+                  <div class="price">$3,800/mo</div>
+                </div>
+                <p>Miami, FL. Spacious furnished villa with outdoor lounge, pool access, and secure parking.</p>
+                <div class="tags"><span class="tag">4 Beds</span><span class="tag">3 Baths</span><span class="tag">Pool</span></div>
+              </div>
+            </article>
+
+            <article class="property" data-location="Denver" data-type="House" data-price="2200">
+              <img class="property-img" src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=900&q=85" alt="Family rental home exterior" />
+              <div class="property-body">
+                <div class="property-top">
+                  <h3>Family Garden Home</h3>
+                  <div class="price">$2,200/mo</div>
+                </div>
+                <p>Denver, CO. Quiet neighborhood home with garden, office room, and attached garage.</p>
+                <div class="tags"><span class="tag">3 Beds</span><span class="tag">2 Baths</span><span class="tag">Garage</span></div>
+              </div>
+            </article>
+
+            <article class="property" data-location="Chicago" data-type="Commercial" data-price="3200">
+              <img class="property-img" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=85" alt="Commercial office space" />
+              <div class="property-body">
+                <div class="property-top">
+                  <h3>Downtown Office Suite</h3>
+                  <div class="price">$3,200/mo</div>
+                </div>
+                <p>Chicago, IL. Flexible commercial space for growing teams, studios, or client-facing offices.</p>
+                <div class="tags"><span class="tag">1,400 sqft</span><span class="tag">WiFi</span><span class="tag">Reception</span></div>
+              </div>
+            </article>
+
+            <article class="property" data-location="Seattle" data-type="Apartment" data-price="1850">
+              <img class="property-img" src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=900&q=85" alt="Stylish apartment bedroom" />
+              <div class="property-body">
+                <div class="property-top">
+                  <h3>Skyline Studio Loft</h3>
+                  <div class="price">$1,850/mo</div>
+                </div>
+                <p>Seattle, WA. Premium studio with city views, gym access, and modern appliances.</p>
+                <div class="tags"><span class="tag">Studio</span><span class="tag">Gym</span><span class="tag">Furnished</span></div>
+              </div>
+            </article>
+
+            <article class="property" data-location="Phoenix" data-type="House" data-price="1650">
+              <img class="property-img" src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=900&q=85" alt="Suburban rental house" />
+              <div class="property-body">
+                <div class="property-top">
+                  <h3>Sunny Suburban House</h3>
+                  <div class="price">$1,650/mo</div>
+                </div>
+                <p>Phoenix, AZ. Comfortable single-family home close to schools, parks, and shopping.</p>
+                <div class="tags"><span class="tag">3 Beds</span><span class="tag">2 Baths</span><span class="tag">Pet Friendly</span></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="services">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Why renters choose us</span>
+            <h2>Everything you need to rent with confidence.</h2>
+          </div>
+          <div class="features">
+            <article class="feature">
+              <div class="icon">✓</div>
+              <h3>Verified listings</h3>
+              <p>Every featured property includes checked details, real photos, and clear rental terms.</p>
+            </article>
+            <article class="feature">
+              <div class="icon">$</div>
+              <h3>Transparent pricing</h3>
+              <p>See monthly rent, property features, and availability before scheduling a viewing.</p>
+            </article>
+            <article class="feature">
+              <div class="icon">↗</div>
+              <h3>Fast viewing requests</h3>
+              <p>Submit one form and our team helps coordinate the best available viewing time.</p>
+            </article>
+            <article class="feature">
+              <div class="icon">★</div>
+              <h3>Tenant support</h3>
+              <p>Get help comparing properties, understanding requirements, and moving forward.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="process">
+        <div class="container split">
+          <div>
+            <span class="eyebrow">How it works</span>
+            <h2 style="margin-top: 18px; font-size: clamp(30px, 4vw, 48px); letter-spacing: -0.05em">
+              A simpler way to find and book rentals.
+            </h2>
+            <p style="margin-top: 16px; color: var(--muted); line-height: 1.8">
+              RentalXgogo keeps the rental journey clear from search to viewing request.
+              Pick a property, send your details, and our team helps with next steps.
+            </p>
+            <a class="btn" href="#contact" style="margin-top: 24px">Start Rental Request</a>
+          </div>
+          <div class="steps">
+            <article class="step">
+              <div class="step-number">01</div>
+              <h3>Search listings</h3>
+              <p>Filter by location, property type, and budget to find rentals that match your needs.</p>
+            </article>
+            <article class="step">
+              <div class="step-number">02</div>
+              <h3>Compare details</h3>
+              <p>Review rent, amenities, room count, availability, and neighborhood highlights.</p>
+            </article>
+            <article class="step">
+              <div class="step-number">03</div>
+              <h3>Request viewing</h3>
+              <p>Send your contact details and preferred property through the booking form.</p>
+            </article>
+            <article class="step">
+              <div class="step-number">04</div>
+              <h3>Move forward</h3>
+              <p>Get support with viewing schedules, application requirements, and next steps.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Reviews</span>
+            <h2>Trusted by renters and property owners.</h2>
+          </div>
+          <div class="testimonials">
+            <figure class="testimonial">
+              <p>"I found a furnished apartment in two days. The listings were clear and the viewing was easy to arrange."</p>
+              <figcaption class="person"><span class="avatar">AM</span><strong>Alicia Morgan<br /><span style="color: var(--muted); font-weight: 700">Apartment renter</span></strong></figcaption>
+            </figure>
+            <figure class="testimonial">
+              <p>"RentalXgogo helped us compare homes quickly and avoid wasting time on properties that did not fit."</p>
+              <figcaption class="person"><span class="avatar">JR</span><strong>James Reed<br /><span style="color: var(--muted); font-weight: 700">Family tenant</span></strong></figcaption>
+            </figure>
+            <figure class="testimonial">
+              <p>"The inquiry process is professional. We receive better leads and fewer back-and-forth messages."</p>
+              <figcaption class="person"><span class="avatar">SK</span><strong>Sara Kim<br /><span style="color: var(--muted); font-weight: 700">Property owner</span></strong></figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">FAQ</span>
+            <h2>Rental questions, answered.</h2>
+          </div>
+          <div class="faq">
+            <details open>
+              <summary>Are the listings verified?</summary>
+              <p>Featured listings are prepared with clear property details, photos, and basic rental information so renters can make faster decisions.</p>
+            </details>
+            <details>
+              <summary>Can I schedule a viewing online?</summary>
+              <p>Yes. Use the contact form to share your preferred property and availability. The team can follow up to coordinate a viewing.</p>
+            </details>
+            <details>
+              <summary>Do you support commercial rentals?</summary>
+              <p>Yes. The website includes apartments, houses, villas, and commercial spaces such as office suites.</p>
+            </details>
+            <details>
+              <summary>Can owners list their properties?</summary>
+              <p>Property owners can contact RentalXgogo through the same form and request listing support.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container contact-wrap">
+          <div class="contact-card">
+            <span class="eyebrow">Contact</span>
+            <h2 style="margin-top: 18px; font-size: clamp(30px, 4vw, 46px); letter-spacing: -0.05em">
+              Ready to view a property?
+            </h2>
+            <p style="margin-top: 14px; color: var(--muted); line-height: 1.8">
+              Send your details and the RentalXgogo team will help you move toward the right rental.
+            </p>
+            <div class="contact-list">
+              <div>✓ Fast response for viewing requests</div>
+              <div>✓ Support for renters and property owners</div>
+              <div>✓ Apartments, homes, villas, and offices</div>
+            </div>
+          </div>
+
+          <form class="form" id="contactForm">
+            <div class="form-grid">
+              <label>
+                Full name
+                <input required name="name" placeholder="Your name" />
+              </label>
+              <label>
+                Email
+                <input required name="email" type="email" placeholder="you@example.com" />
+              </label>
+              <label>
+                Phone
+                <input name="phone" placeholder="+1 555 000 1234" />
+              </label>
+              <label>
+                Interested property
+                <select name="property">
+                  <option>Modern City Apartment</option>
+                  <option>Private Coastal Villa</option>
+                  <option>Family Garden Home</option>
+                  <option>Downtown Office Suite</option>
+                  <option>Skyline Studio Loft</option>
+                  <option>Sunny Suburban House</option>
+                </select>
+              </label>
+              <label class="full">
+                Message
+                <textarea required name="message" placeholder="Tell us your preferred move-in date, budget, and viewing availability."></textarea>
+              </label>
+            </div>
+            <button class="btn" type="submit" style="margin-top: 16px">Submit Rental Request</button>
+            <div class="success" id="successMessage">Your request was submitted. We will contact you soon.</div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <a class="logo" href="#home"><span class="logo-mark">RX</span><span>RentalXgogo</span></a>
+        <div>© <span id="year"></span> RentalXgogo. All rights reserved.</div>
+      </div>
+    </footer>
+
+    <script>
+      const year = document.getElementById("year");
+      year.textContent = new Date().getFullYear();
+
+      const searchForm = document.getElementById("searchForm");
+      const propertyCards = [...document.querySelectorAll(".property")];
+
+      searchForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const location = document.getElementById("locationInput").value.trim().toLowerCase();
+        const type = document.getElementById("typeInput").value;
+        const budget = Number(document.getElementById("budgetInput").value || Infinity);
+
+        propertyCards.forEach((card) => {
+          const matchesLocation = !location || card.dataset.location.toLowerCase().includes(location);
+          const matchesType = !type || card.dataset.type === type;
+          const matchesBudget = Number(card.dataset.price) <= budget;
+          card.style.display = matchesLocation && matchesType && matchesBudget ? "" : "none";
+        });
+      });
+
+      const contactForm = document.getElementById("contactForm");
+      const successMessage = document.getElementById("successMessage");
+
+      contactForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (!contactForm.checkValidity()) {
+          contactForm.reportValidity();
+          return;
+        }
+        successMessage.style.display = "block";
+        contactForm.reset();
+      });
+    </script>
+  </body>
+</html>
