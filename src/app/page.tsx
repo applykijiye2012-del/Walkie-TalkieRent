@@ -1,36 +1,23 @@
-import { Footer } from "@/components/layout/footer";
-import { Navbar } from "@/components/layout/navbar";
-import { Hero } from "@/components/sections/hero";
-import {
-  BenefitsSection,
-  CaseStudiesSection,
-  ContactSection,
-  FaqSection,
-  FinalCtaSection,
-  MetricsSection,
-  ProblemSection,
-  ProcessSection,
-  ServicesSection,
-  SolutionSection,
-  TestimonialsSection,
-} from "@/components/sections/landing-sections";
+import { WalkieTalkieSite } from "@/components/walkie-talkie-site";
 
 export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": "LocalBusiness",
     name: "RentalXgogo",
     url: "https://rentalxgogo.com",
+    telephone: "9140968645",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Datta Mandir Rd, Demello Compound, Vakola, Santacruz East",
+      addressLocality: "Mumbai",
+      addressRegion: "Maharashtra",
+      postalCode: "400055",
+      addressCountry: "IN",
+    },
     description:
-      "AI and n8n automation company helping businesses automate lead capture, CRM updates, follow-ups, internal workflows, and business process optimization.",
-    serviceType: [
-      "n8n automation",
-      "AI workflow automation",
-      "CRM automation",
-      "Lead capture automation",
-      "Business process automation",
-    ],
-    areaServed: "Worldwide",
+      "Wireless walkie-talkie rentals in Mumbai for weddings, events, security teams, construction sites, hotels, schools, warehouses, and production teams.",
+    areaServed: ["Mumbai", "Andheri", "Bandra", "Juhu", "Goregaon", "Powai", "Worli", "Malad", "Santacruz", "Panvel"],
   };
 
   return (
@@ -39,22 +26,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Navbar />
-      <main>
-        <Hero />
-        <ProblemSection />
-        <SolutionSection />
-        <ServicesSection />
-        <MetricsSection />
-        <CaseStudiesSection />
-        <TestimonialsSection />
-        <ProcessSection />
-        <BenefitsSection />
-        <FaqSection />
-        <FinalCtaSection />
-        <ContactSection />
-      </main>
-      <Footer />
+      <WalkieTalkieSite />
     </>
   );
 }
